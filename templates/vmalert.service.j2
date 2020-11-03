@@ -1,0 +1,23 @@
+{{ ansible_managed | comment }}
+
+[Unit]
+Description=vmalert
+After=network-online.target
+
+[Service]
+Type=simple
+User=vmalert
+Group=vmalert
+ExecReload=/bin/kill -HUP $MAINPID
+ExecStart={{ vmalert_binary_install_dir }}/vmalert-prod \
+  -rule="{{ vmalert_config_dir }}/*.yaml" \
+{% for flag, flag_value in vmalert_config_flags.items() %}\
+  -{{ flag }}{% if flag_value %}={{ flag_value }}{% endif %} {% endfor %}
+
+SyslogIdentifier=vmalert
+KillMode=control-group
+Restart=on-failure
+LimitNOFILE=4096
+
+[Install]
+WantedBy=multi-user.target

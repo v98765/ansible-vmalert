@@ -1,0 +1,12 @@
+---
+- block:
+    - name: "Get checksum list"
+      set_fact:
+        __vmalert_checksums: "{{ lookup('url', 'https://github.com/VictoriaMetrics/VictoriaMetrics/releases/download/v' + vmalert_version + '/vmutils-v' + vmalert_version + '_checksums.txt', wantlist=True) | list }}"
+      run_once: true
+
+    - name: "Get checksum"
+      set_fact:
+        __vmalert_checksum: "{{ item.split(' ')[0] }}"
+      with_items: "{{ __vmalert_checksums }}"
+  delegate_to: localhost

@@ -1,0 +1,12 @@
+---
+- name: copy vmalert rules files
+  copy:
+    src: "{{ item }}"
+    dest: "{{ vmalert_config_dir }}/"
+    force: true
+    owner: root
+    group: vmalert
+    mode: 0644
+  with_fileglob: "{{ vmalert_rules_files }}"
+  notify:
+    - restart vmalert
