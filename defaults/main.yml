@@ -9,7 +9,7 @@ vmalert_config_flags:
   notifier.url: http://127.0.0.1:9093       # AlertManager URL
   remoteWrite.url: http://127.0.0.1:8428    # remote write compatible storage to persist rules
   remoteRead.url: http://127.0.0.1:8428     # PromQL compatible datasource to restore alerts state from
-  evaluationInterval: 3s                    # Default evaluation interval if not specified in rules group
+  evaluationInterval: 1m
 
 vmalert_rules_files:
   - vmalert/rules/*.yaml
