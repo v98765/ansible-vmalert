@@ -1,14 +1,14 @@
 ---
-vmalert_version: 1.45.0
+vmalert_version: 1.47.0
 
 vmalert_config_dir: /etc/vmalert
 vmalert_binary_install_dir: /usr/local/bin
 
 vmalert_config_flags:
-  datasource.url: http://localhost:8428     # PromQL compatible datasource
-  notifier.url: http://localhost:9093       # AlertManager URL
-  remoteWrite.url: http://localhost:8428    # remote write compatible storage to persist rules
-  remoteRead.url: http://localhost:8428     # PromQL compatible datasource to restore alerts state from
+  datasource.url: http://127.0.0.1:8428     # PromQL compatible datasource
+  notifier.url: http://127.0.0.1:9093       # AlertManager URL
+  remoteWrite.url: http://127.0.0.1:8428    # remote write compatible storage to persist rules
+  remoteRead.url: http://127.0.0.1:8428     # PromQL compatible datasource to restore alerts state from
   evaluationInterval: 3s                    # Default evaluation interval if not specified in rules group
 
 vmalert_rules_files:
