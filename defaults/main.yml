@@ -1,5 +1,5 @@
 ---
-vmalert_version: 1.50.1
+vmalert_version: 1.50.2
 
 vmalert_config_dir: /etc/vmalert
 vmalert_binary_install_dir: /usr/local/bin
